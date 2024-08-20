@@ -18,6 +18,7 @@ const getTextVariantStyle: {
   secondary: "text-gray-100",
   danger: "text-red-100",
   success: "text-green-100",
+  default: "text-white",
 };
 
 const CustomButton = ({
@@ -35,9 +36,7 @@ const CustomButton = ({
     onPress={onPress}
   >
     {IconLeft && <IconLeft />}
-    <Text
-      className={`text-lg font-bold ${getTextVariantStyle[textVariant] || "text-white"}`}
-    >
+    <Text className={`text-lg font-bold ${getTextVariantStyle[textVariant]}`}>
       {title}
     </Text>
     {IconRight && <IconRight />}
