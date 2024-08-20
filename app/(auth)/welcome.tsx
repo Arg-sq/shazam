@@ -44,11 +44,11 @@ const OnBoarding = () => {
                 resizeMode="contain"
               />
               <View className="flex flex-row items-center justify-center">
-                <Text className="text-black text-3xl font-bold mx-10 text-center">
+                <Text className="text-black text-xl font-bold mx-10 text-center">
                   {item.title}
                 </Text>
               </View>
-              <Text className="text-lg font-JakartaSemiBold text-center text-slate-800 mx-10 mt-3">
+              <Text className="text-md font-JakartaSemiBold text-center text-slate-800 mx-10 mt-3">
                 {item.description}
               </Text>
             </View>
