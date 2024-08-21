@@ -1,5 +1,12 @@
 import { icons, images } from "@/constants";
-import { Alert, Image, ScrollView, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import InputField from "../components/InputField";
 import { useState } from "react";
 import CustomButton from "../components/CustomButton";
@@ -16,7 +23,7 @@ const SignUp = () => {
   });
   const [showSuccessModal, setShowSuccesModal] = useState(false);
   const { isLoaded, signUp, setActive } = useSignUp();
-
+  const [signningUp, setSigningUp] = useState(false);
   const [verification, setVerification] = useState({
     state: "default",
     error: "",
@@ -27,7 +34,7 @@ const SignUp = () => {
     if (!isLoaded) {
       return;
     }
-
+    setSigningUp(true);
     try {
       await signUp.create({
         emailAddress: form.email,
@@ -35,9 +42,12 @@ const SignUp = () => {
       });
 
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
+      setSigningUp(false);
 
       setVerification({ ...verification, state: "pending" });
     } catch (err: any) {
+      setSigningUp(false);
+
       Alert.alert("Error", err.errors[0].longMessage);
     }
   };
@@ -109,9 +119,16 @@ const SignUp = () => {
           />
           <View className="items-center">
             <CustomButton
-              title={verification.state === "pending" ? "Loading" : "Sign Up"}
+              title={
+                signningUp ? (
+                  <ActivityIndicator animating={signningUp} />
+                ) : (
+                  "Sign Up"
+                )
+              }
+              bgVariant={!signningUp ? "primary" : "secondary"}
               className="mt-6"
-              disabled={verification.state === "pending"}
+              disabled={signningUp}
               onPress={onSignUpPress}
             />
           </View>
@@ -182,7 +199,10 @@ const SignUp = () => {
                 title="Go Home"
                 bgVariant="success"
                 className="mt-5"
-                onPress={() => router.replace("/(root)/(tabs)/home")}
+                onPress={() => {
+                  setShowSuccesModal(false);
+                  router.push("/(root)/(tabs)/home");
+                }}
               />
             </View>
           </View>

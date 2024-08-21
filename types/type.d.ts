@@ -1,3 +1,4 @@
+import React from "react";
 import { TextInputProps, TouchableOpacityProps } from "react-native";
 
 declare interface Driver {
@@ -54,7 +55,7 @@ declare interface Ride {
 }
 
 declare interface ButtonProps extends TouchableOpacityProps {
-  title: string;
+  title: string | element;
   bgVariant?: "primary" | "secondary" | "danger" | "outline" | "success";
   textVariant?: "primary" | "default" | "secondary" | "danger" | "success";
   IconLeft?: React.ComponentType<any>;
