@@ -16,13 +16,13 @@ import { useSignUp } from "@clerk/clerk-expo";
 import ReactNativeModal from "react-native-modal";
 
 const SignUp = () => {
+  const { isLoaded, signUp, setActive } = useSignUp();
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
   });
   const [showSuccessModal, setShowSuccesModal] = useState(false);
-  const { isLoaded, signUp, setActive } = useSignUp();
   const [signningUp, setSigningUp] = useState(false);
   const [verification, setVerification] = useState({
     state: "default",
