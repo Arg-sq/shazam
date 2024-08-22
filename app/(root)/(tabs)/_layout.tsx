@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
-import TabScreen from "./components/TabScreen";
+import TabIcon from "../../components/TabIcon";
+import { tabData } from "@/constants";
 
 const Layout = () => {
   return (
@@ -23,7 +24,19 @@ const Layout = () => {
         },
       }}
     >
-      <TabScreen />
+      {tabData.map((tab, index) => (
+        <Tabs.Screen
+          key={index}
+          name={tab.name}
+          options={{
+            title: tab.title,
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused} source={tab.image} />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 };
