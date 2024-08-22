@@ -94,6 +94,28 @@ export const onboarding = [
     image: images.onboarding3,
   },
 ];
+export const tabData = [
+  {
+    name: "home",
+    title: "Home",
+    image: icons.home,
+  },
+  {
+    name: "rides",
+    title: "Rides",
+    image: icons.list,
+  },
+  {
+    name: "chat",
+    title: "Chat",
+    image: icons.chat,
+  },
+  {
+    name: "profile",
+    title: "Profile",
+    image: icons.profile,
+  },
+];
 
 export const data = {
   onboarding,
