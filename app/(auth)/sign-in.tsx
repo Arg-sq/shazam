@@ -7,7 +7,7 @@ import { Link, useRouter } from "expo-router";
 import OAuth from "../components/Oauth";
 import { useSignIn } from "@clerk/clerk-expo";
 
-const SignIp = () => {
+const SignIn = () => {
   const { signIn, setActive, isLoaded } = useSignIn();
 
   const [form, setForm] = useState({
@@ -77,7 +77,7 @@ const SignIp = () => {
             href="/sign-up"
             className="text-md text-center text-general-200 mt-4"
           >
-            <Text>Don;t hvae an account? </Text>
+            <Text>Don't hvae an account? </Text>
             <Text className="text-primary-500">Sign Up</Text>
           </Link>
         </View>
@@ -85,4 +85,4 @@ const SignIp = () => {
     </ScrollView>
   );
 };
-export default SignIp;
+export default SignIn;
